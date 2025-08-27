@@ -51,3 +51,6 @@ This model fuses three AI modalities—object detection, speech transcription, a
 -Context-aware smart environments or robotics requiring multimodal perception.
 
 -Enhanced video analytics combining visual and audio cues.
+
+
+![Built with ❤ for Samsung EnnovateX 2025 AI Challenge] (assets/logo.png)
