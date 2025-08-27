@@ -63,7 +63,9 @@ The overall processing pipeline consists of three parallel modalities—object d
 flowchart TD
 
     A [Video Stream] -->|Frame-by-frame| B[Object Detection (YOLOv8s-oiv7)]
+    
     A -->|Clip buffer of 16 frames| C[Action Recognition (CNN-GRU)]
+    
     D[Audio Stream (Microphone)] --> E[Speech Processing (Vosk)]
 
     B --> F[Fusion-SceneInterpreter]
@@ -85,5 +87,4 @@ flowchart TD
 - Context-aware smart environments or robotics requiring multimodal perception.  
 - Enhanced video analytics combining visual and audio cues.
 
-![Built with ❤ for Samsung EnnovateX 2025 AI Challenge](./docs/assets/logo.png)
-
+![Built with 💗 for Samsung EnnovateX 2025 AI Challenge](./docs/assets/logo.png)
