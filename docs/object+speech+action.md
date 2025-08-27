@@ -65,7 +65,7 @@ flowchart TD
     A -->|Clip buffer of 16 frames| C[Action Recognition (CNN-GRU)]
     D[Audio Stream (Microphone)] --> E[Speech Processing (Vosk)]
 
-    B --> F[Fusion (SceneInterpreter)]
+    B --> F[Fusion-SceneInterpreter]
     C --> F
     E --> F
 
@@ -80,6 +80,7 @@ flowchart TD
     style F fill:#f4a261,stroke:#000,stroke-width:1px
     style G fill:#90be6d,stroke:#000,stroke-width:1px
     style H fill:#90be6d,stroke:#000,stroke-width:1px
+
 
 
 # Logging and Visualization
