@@ -85,5 +85,5 @@ flowchart TD
 - Context-aware smart environments or robotics requiring multimodal perception.  
 - Enhanced video analytics combining visual and audio cues.
 
-![Built with ❤ for Samsung EnnovateX 2025 AI Challenge](./logo.png)
+![Built with ❤ for Samsung EnnovateX 2025 AI Challenge](./docs/assets/logo.png)
 
