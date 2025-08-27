@@ -2,7 +2,7 @@
 This model fuses three AI modalities—object detection, speech transcription, and action recognition—to achieve enriched scene understanding. By combining visual cues from object detection and action recognition with auditory information from speech processing, it generates a contextual interpretation of the environment and activities.
 
 ## Components
-Object Detection
+## Object Detection
 -Utilizes YOLOv8s with custom weights (yolov8s-oiv7.pt) for fast and accurate real-time detection.
 
 -Detects multiple objects per frame, providing bounding boxes, labels, and confidence scores.
