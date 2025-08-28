@@ -1,41 +1,160 @@
-### **Important Instructions**:  
-- Click on *"Use this template"* button and *"Create a new repository"* in your github account for submission.
-<img width="1262" height="93" alt="Screenshot 2025-08-15 at 5 59 49 AM" src="https://github.com/user-attachments/assets/b72d5afd-ba07-4da1-ac05-a373b3168b6a" />
-
-- Add one of the following open source licenses - [MIT](https://opensource.org/licenses/MIT), [Apache 2.0](https://opensource.org/licenses/Apache-2.0) or [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) to your submission repository. 
-- Once your repository is ready for **evaluation** send an email to ennovatex.io@samsung.com with the subject - "AI Challenge Submission - Team name" and the body of the email must contain only the Team Name, Team Leader Name & your GitHub project repository link.
-- All submission project materials outlined below must be added to the github repository and nothing should be attached in the submission email.
-- In case of any query, please feel free to reach out to us at ennovatex.io@samsung.com
-
-#### Evaluation Criteria
-
-| Project Aspect | % |
-| --- | --- |
-| Novelty of Approach | 25% |
-| Technical implementation & Documentation | 25% |
-| UI/UX Design or User Interaction Design | 15% |
-| Ethical Considerations & Scalability | 10% |
-| Demo Video (10 mins max) | 25% |
-
-**-------------------------- Your Project README.md should start from here -----------------------------**
-
 # Samsung EnnovateX 2025 AI Challenge Submission
 
-- **Problem Statement** - *(Must exactly match one of the nine Samsung EnnovateX AI Challenge Problem Statements)*
-- **Team name** - *(As provided during the time of registration)*
-- **Team members (Names)** - *Member 1 Name*, *Member 2 Name*, *Member 3 Name*, *Member 4 Name* 
-- **Demo Video Link** - *(Upload the Demo video on Youtube as a public or unlisted video and share the link. Google Drive uploads or any other uploads are not allowed.)*
+## Problem Statement - Building the Untethered, Always-On AI Companion
+> Reimagine a smartphone that doesn't just run apps, but truly understands and assists users. An agent that sees what you see, hears what you hear, and remembers your experiences to provide contextual, real-time help, all without a constant connection to the cloud.
 
+## Team Name
+**Manusmriti**
 
-### Project Artefacts
+## Team Members
+- **Member 1**: Nandika Gupta
 
-- **Technical Documentation** - [Docs](docs) *(All technical details must be written in markdown files inside the docs folder in the repo)*
-- **Source Code** - [Source](src) *(All source code must be added to the src folder in the repo. The code must be capable of being successfully installed/executed and must run consistently on the intended platforms.)*
-- **Models Used** - *(Hugging Face links to all models used in the project. You are permitted to use open weight models.)*
-- **Models Published** - *(In case you have developed a model as a part of your solution, kindly upload it on Hugging Face under appropriate open source license and add the link here.)*
-- **Datasets Used** - *(Links to all datasets used in the project. You are permitted to use publicly available datasets under licenses like Creative Commons, Open Data Commons, or equivalent.)*
-- **Datasets Published** - *(Links to all datasets created for the project and published on Hugging Face. You are allowed to publish any synthetic or proprietary dataset used in their project, but will be responsible for any legal compliance and permission for the same. The dataset can be published under Creative Commons, Open Data Commons, or equivalent license.)*
+- **Member 2**: Madhur Prakash Mangal
 
-### Attribution 
+- **Member 3**: Nidhi Singh
 
-In case this project is built on top of an existing open source project, please provide the original project link here. Also, mention what new features were developed. Failing to attribute the source projects may lead to disqualification during the time of evaluation.
+- **Member 4**: Pranav Sharma
+
+---
+
+## Demo Video Link
+[YouTube Demo](https://youtube.com/watch?v=demo-link)
+
+---
+
+# Project Artefacts
+
+## Technical Documentation
+[Technical Docs](/docs/README.md)  
+*All technical details are documented in markdown files, including system architecture, implementation details, performance metrics, and deployment instructions.*
+
+## Source Code
+[GitHub Repository](https://github.com/your-repo)  
+*Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
+
+---
+
+## Models Used
+All models utilized are **open-source** and publicly available:
+
+| Model | Category | License | Purpose | Key Features | Performance | Repository |
+|-------|----------|---------|---------|--------------|-------------|------------|
+| **[YoloV8s-oiv7 Small](https://huggingface.co/Ultralytics/YOLOv8)** | Core AI Models | GPL-3.0 | Real-time object and action detection | Fine-tuned on UCF101 dataset for 5 action categories | <100ms inference time on mobile devices | [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) |
+| **[MobileNet v2](https://huggingface.co/docs/transformers/en/model_doc/mobilenet_v2)** | Video Processing | Apache 2.0 | Efficient video processing backbone | TensorFlow Lite quantized for mobile deployment | <50MB model size | [TensorFlow Models](https://github.com/tensorflow/models) |
+| **[Vosk API](https://alphacephei.com/vosk/)** | Speech Processing | Apache 2.0 | Offline speech-to-text recognition | 20+ language models supported, complete offline operation | Real-time streaming recognition with zero latency, 50MB model size | [Vosk API](https://github.com/alphacep/vosk-api) |
+> *Note: YoloV8s-oiv7 offers dual licensing—AGPL-3.0 for open-source use and an Enterprise License for commercial applications.*
+
+---
+
+## Models Published 
+
+| Model | Category | License | Purpose | Key Features | Performance | Parent Model |
+|-------|----------|---------|---------|--------------|-------------|---------------------|
+| **[distilgpt2](https://huggingface.co/Madhur-Prakash-Mangal/distilgpt2-TFLITE)** | Large Language Models | Apache 2.0 | Text generation and completion | Smaller, faster version of DistilGPT-2 | <50ms inference time on mobile devices | [Hugging Face](https://huggingface.co/distilgpt2) |
+| **[Embedding Model](https://huggingface.co/Madhur-Prakash-Mangal/all-MiniLM-L6-v2-tflite)** | Sentence Transformers | Apache 2.0 | Text embedding generation | Trained on diverse text corpora | <50ms inference time on mobile devices | [Hugging Face](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) |
+| **[Action Detection Model](https://huggingface.co/NanG01/Action_detection)** | Core AI Models | Apache 2.0 | Customized action detection | Trained on UCF101 for 5 action categories | <100ms inference time on mobile devices | [Hugging Face](https://huggingface.co/docs/transformers/en/model_doc/mobilenet_v2) |
+
+---
+
+## Datasets Used
+*All datasets are publicly available under open licenses:*
+
+| **Dataset** | **License** | **Purpose** | **Size** | **Usage** | **Source/Provider** |
+|-------------|-------------|-------------|----------|-----------|----------------------|
+| [UCF101 Action Recognition](https://www.kaggle.com/datasets/abdallahwagih/ucf101-videos) | Apache 2.0 | Training YoloV8s-oiv7 for action detection | 13,320 videos across 101 categories | 5 selected categories for mobile optimization | University of Central Florida |
+| [Open Images v7](https://storage.googleapis.com/openimages/web/index.html) | Creative Commons BY 4.0 | Pre-training foundation for YoloV8s-oiv7 object detection | 9M+ images with detailed annotations | Indirect - model pre-training foundation | Google Research |
+
+---
+
+# Attribution
+
+This project builds upon several **open-source projects** while contributing novel innovations:
+
+## Core Open Source Dependencies
+
+### Mobile Development Framework
+- **[Flutter](https://github.com/flutter/flutter)** *(Open Source - BSD 3-Clause)*
+  - **Usage**: Cross-platform mobile application development
+  - **Version**: Latest stable release
+  - **License**: BSD 3-Clause License
+
+---
+
+### Audio/Video Processing
+- **[FFmpeg](https://github.com/FFmpeg/FFmpeg)** *(Open Source - LGPL/GPL)*
+  - **Usage**: Real-time audio extraction from video streams
+  - **Integration**: Flutter plugin for seamless audio processing
+  - **License**: Lesser General Public License (LGPL)
+
+---
+
+### AI/ML Frameworks
+| **Dependency** | **Usage / Integration** | **Provider** | **License** |
+|----------------|--------------------------|--------------|-------------|
+| [TensorFlow Lite](https://github.com/tensorflow/tensorflow) | On-device model inference & optimization (Custom TFLite interpreter) | Google | Apache 2.0 |
+| [ai-edge-torch](https://github.com/google-ai-edge/ai-edge-torch) | Converts PyTorch models to mobile-optimized TFLite | Google AI Edge Team | Apache 2.0 |
+
+---
+
+### Flutter Ecosystem
+| **Dependency** | **Usage / Integration** | **License** |
+|----------------|--------------------------|-------------|
+| [go_router](https://pub.dev/packages/go_router) | Declarative routing & navigation | BSD 3-Clause |
+| [flutter_riverpod](https://pub.dev/packages/flutter_riverpod) | Reactive state management & dependency injection | MIT |
+
+---
+
+# License & Acknowledgments
+
+## Open Source Licenses
+- **Flutter Framework**: BSD 3-Clause License
+
+- **YoloV8s-oiv7**: GPL-3.0 License  
+
+- **Vosk API**: Apache 2.0 License
+
+- **FFmpeg**: LGPL/GPL License
+
+- **TensorFlow Lite**: Apache 2.0 License
+
+- **ai-edge-torch**: Apache 2.0 License
+
+- **MobileNet v2**: Apache 2.0 License
+
+---
+
+## Dataset Licenses
+- **UCF101**: Apache 2.0
+
+- **Open Images**: Creative Commons BY 4.0
+
+---
+
+## Special Acknowledgments
+
+### Industry Partners
+- **Samsung Research**: For organizing the EnnovateX 2025 AI Challenge and providing the vision for on-device personal AI assistants
+
+- **Google AI Edge**: For developing and open-sourcing ai-edge-torch conversion tools that enable mobile AI deployment
+- **Ultralytics**: For the YoloV8s-oiv7 framework, comprehensive documentation, and active community support
+
+---
+
+### Academic Contributors  
+- **University of Central Florida**: For creating and maintaining the UCF101 action recognition dataset
+
+- **Google Research**: For the Open Images dataset that serves as foundation training data
+
+---
+
+### Open Source Communities
+- **Flutter Community**: For exceptional documentation, packages, and developer support ecosystem
+
+- **TensorFlow Community**: For mobile AI frameworks and optimization tools
+
+- **Vosk Community**: For offline speech recognition models and multi-language support
+
+---
+
+*Built with ❤️ for Samsung EnnovateX 2025 AI Challenge*  
+---
