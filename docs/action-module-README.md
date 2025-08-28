@@ -40,15 +40,15 @@ To capture temporal dynamics, the action recognition component analyzes sequence
 
 - **Output and Classes**: The model predicts from five predefined action classes, adapted from the UCF101 dataset (a benchmark with 101 action categories, including sports, daily activities, and interactions). Examples might include "walking", "eating", "typing", "exercising", or "talking". Outputs include the top action label, confidence scores (softmax probabilities), and ranked predictions for uncertainty handling.
 
-### Demo Videos
-
-#### Action Detection
-https://github.com/user-attachments/assets/c8576f47-eb0f-46e9-8845-df22fbd40cd7
-
-#### Object Detection
-https://github.com/user-attachments/assets/153b1920-ca40-4de9-b22a-7a6feb507a21
 
 - **Performance and Training**: Trained on subsets of UCF101, which contains over 13,000 clips, the model achieves accuracies above 90% on similar tasks. The MobileNetV2 backbone ensures mobile-friendly inference, with GRU adding temporal robustness for activities spanning multiple frames.
+
+### Demo Videos
+
+- #### Object Detection
+  - https://github.com/user-attachments/assets/153b1920-ca40-4de9-b22a-7a6feb507a21
+
+---
 
 ## Speech Processing
 The auditory modality handles real-time speech capture and interpretation, adding linguistic and emotional context to the visual data.
