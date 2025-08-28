@@ -32,6 +32,10 @@
 [GitHub Repository](https://github.com/Team-Manusmriti/ai-challenge-submission-project-manusmriti/tree/main/src)  
 *Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
 
+## Market Overview
+[Market Analysis and Scalability](/docs/market_overview.md)
+*This section provides an overview of the market landscape, including target audience, competitive analysis, and potential use cases for the AI companion technology.*
+
 ---
 
 ## Models Used
