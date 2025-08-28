@@ -18,7 +18,7 @@
 ---
 
 ## Demo Video Link
-[YouTube Demo](https://youtu.be/Lc_D89yWnFI)
+[YouTube Video Link](https://youtu.be/Lc_D89yWnFI)
 
 ---
 
