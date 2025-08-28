@@ -1,0 +1,22 @@
+# Core deep learning
+torch>=1.11
+torchvision
+
+# Ultralytics YOLOv8 for object detection
+ultralytics>=8.0.0
+
+# Vosk speech recognition for microphone
+vosk
+
+# Audio input from mic
+sounddevice
+
+# Video stream, annotation, and image processing
+opencv-python
+
+# Data handling
+numpy
+Pillow
+
+# Utilities
+tqdm
