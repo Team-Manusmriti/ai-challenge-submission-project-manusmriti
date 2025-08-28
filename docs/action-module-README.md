@@ -46,7 +46,7 @@ To capture temporal dynamics, the action recognition component analyzes sequence
 ### Demo Videos
 
 - #### Object Detection
-  - https://github.com/user-attachments/assets/153b1920-ca40-4de9-b22a-7a6feb507a21
+  https://github.com/user-attachments/assets/153b1920-ca40-4de9-b22a-7a6feb507a21
 
 ---
 
