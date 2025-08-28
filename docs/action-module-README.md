@@ -1,8 +1,8 @@
-# Object/Action Detection Module 
+# Video Context Detection Module 
 
 ## Overview
 
-The Object/Action Detection Module integrates three core AI modalities—object detection, speech transcription, and action recognition—to deliver a comprehensive, contextual interpretation of dynamic environments. By fusing visual data from object detection and action recognition with auditory insights from speech processing, it enables real-time scene analysis that goes beyond single-modality limitations. This fusion supports applications in assistive technologies, smart environments, and advanced video analytics, providing a holistic understanding of activities, interactions, and contexts.
+The Video Context Detection Module integrates three core AI modalities—object detection, speech transcription, and action recognition—to deliver a comprehensive, contextual interpretation of dynamic environments. By fusing visual data from object detection and action recognition with auditory insights from speech processing, it enables real-time scene analysis that goes beyond single-modality limitations. This fusion supports applications in assistive technologies, smart environments, and advanced video analytics, providing a holistic understanding of activities, interactions, and contexts.
 
 The model is designed for efficiency, running on standard hardware with real-time capabilities, and is particularly suited for edge deployment in mobile or IoT scenarios. It processes live video and audio streams, generating interpretable outputs like scene descriptions with confidence scores. Below, each component, the fusion strategy, workflow, logging, visualization, and applications are elaborated in greater depth.
 
@@ -11,7 +11,7 @@ The model is designed for efficiency, running on standard hardware with real-tim
 ## Architecture
 
 ```
-Video/Camera Input → YoloV8s-oiv7 Detection → MobileNet v2 Processing → Action/Object Classification → Context Generation → 
+Video/Camera Input → YoloV8s-oiv7 Detection/Audio Extraction (for pre-recorded videos,using ffmpeg)/Live Audio detection(for real-time) → MobileNet v2 Processing/Audio Processing[Vosk library] → Action/Object Classification → Context Generation → 
 Text File Creation → Embedding Storage → Vector Database
 ```
 
@@ -48,7 +48,7 @@ https://github.com/user-attachments/assets/c8576f47-eb0f-46e9-8845-df22fbd40cd7
 #### Object Detection
 https://github.com/user-attachments/assets/153b1920-ca40-4de9-b22a-7a6feb507a21
 
-- **Performance and Training**: Trained on subsets of UCF101, which contains over 13,000 clips, the model achieves accuracies around 70–90% on similar tasks. The MobileNetV2 backbone ensures mobile-friendly inference, with GRU adding temporal robustness for activities spanning multiple frames.
+- **Performance and Training**: Trained on subsets of UCF101, which contains over 13,000 clips, the model achieves accuracies above 90% on similar tasks. The MobileNetV2 backbone ensures mobile-friendly inference, with GRU adding temporal robustness for activities spanning multiple frames.
 
 ## Speech Processing
 The auditory modality handles real-time speech capture and interpretation, adding linguistic and emotional context to the visual data.
