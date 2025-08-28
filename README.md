@@ -29,7 +29,7 @@
 *All technical details are documented in markdown files, including system architecture, implementation details, performance metrics, and deployment instructions.*
 
 ## Source Code
-[GitHub Repository](https://github.com/your-repo)  
+[GitHub Repository](https://github.com/Team-Manusmriti/ai-challenge-submission-project-manusmriti/tree/main/src)  
 *Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
 
 ---
