@@ -33,7 +33,7 @@
 *Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
 
 ## Market Overview
-[Market Analysis and Scalability](/docs/market_overview.md)
+[Market Analysis and Scalability](/docs/Market_Overview.md)
 *This section provides an overview of the market landscape, including target audience, competitive analysis, and potential use cases for the AI companion technology.*
 
 ---
