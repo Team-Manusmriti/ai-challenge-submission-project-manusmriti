@@ -3,8 +3,14 @@ import 'dart:math' as math;
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:listen_iq/screens/voice_assistant/components/3d_mesh.dart';
+import 'package:listen_iq/services/file/crypto_service.dart';
+import 'package:listen_iq/services/file/embeddings.dart';
+import 'package:listen_iq/services/file/pipeline.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:flutter_tts/flutter_tts.dart';
+import 'dart:io';
+import 'package:tiktoken/tiktoken.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:tflite_flutter/tflite_flutter.dart';
 
 class VoiceAssistantScreen extends StatefulWidget {
   const VoiceAssistantScreen({super.key});
@@ -41,6 +47,14 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
   Timer? _speechTimeout;
   Timer? _levelSimulationTimer;
 
+  late Interpreter _interpreter;
+  bool _isModelLoaded = false;
+  final enc = getEncoding('gpt2');
+
+  // Add the embeddings instance
+  late Embeddings _embeddings;
+  bool _embeddingsLoaded = false;
+
   // Color scheme as specified
   static const Color primaryPurple = Color(0xFF662d8c);
   static const Color accentPink = Color(0xFFd4145a);
@@ -51,6 +65,110 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
     super.initState();
     _initializeAnimations();
     _initializeSpeech();
+    _initializeEmbeddings();
+    _loadModel();
+  }
+
+  Future<void> _loadModel() async {
+    try {
+      _interpreter = await Interpreter.fromAsset(
+        "assets/models/distilgpt2.tflite",
+      );
+      debugPrint("✅ DistilGPT-2 model loaded!");
+      setState(() {
+        _isModelLoaded = true;
+        _status = "Model loaded.";
+      });
+    } catch (e) {
+      debugPrint("❌ Error loading model: $e");
+    }
+  }
+
+  /// Always work inside /enc_files
+  Future<String> _appDirPath() async {
+    final dir = await getApplicationDocumentsDirectory();
+    final encDir = Directory("${dir.path}/enc_files");
+    if (!await encDir.exists()) {
+      await encDir.create(recursive: true);
+    }
+    return encDir.path;
+  }
+
+  Future<void> _createTextFile(String text) async {
+    final dirPath = await _appDirPath();
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
+    final file = File("$dirPath/sample_$timestamp.txt");
+
+    await file.writeAsString(text, flush: true);
+    setState(() => _status = "Created test file at ${file.path}");
+  }
+
+  /// Debug: list files in /enc_files
+  Future<void> _makeVectorEmbeddings() async {
+    final dirPath = await _appDirPath();
+    final dir = Directory(dirPath);
+    final files = dir.listSync();
+    if (files.length > 20) {
+      try {
+        final pipeline = Pipeline(
+          aesKey32: List.filled(32, 1),
+        ); // dummy key for now
+        await pipeline.run();
+      } catch (e) {
+        setState(() => _status = "Pipeline failed: $e");
+      }
+    }
+  }
+
+  Future<void> _encryptAll() async {
+    setState(() => _status = "Encrypting files...");
+    final dirPath = await _appDirPath();
+    final dir = Directory(dirPath);
+
+    final files = dir
+        .listSync()
+        .where((e) => e is File && e.path.endsWith(".txt"))
+        .cast<File>()
+        .toList();
+
+    if (files.isEmpty) {
+      setState(() => _status = "No .txt files found in $dirPath");
+      return;
+    }
+
+    final crypto = CryptoService();
+    await crypto.loadKeyEncrypt();
+
+    int successCount = 0;
+    for (final f in files) {
+      try {
+        final outPath = f.path.replaceFirst(RegExp(r'\.txt$'), '.enc');
+        await crypto.encryptFile(f, outPath);
+        await f.delete();
+        successCount++;
+      } catch (e, st) {
+        print("❌ Failed to encrypt ${f.path}: $e\n$st");
+      }
+    }
+    // create vector embedding if more than 20 files
+    if (files.length > 20) {
+      await _makeVectorEmbeddings();
+    }
+    setState(() => _status = "Encrypted $successCount/${files.length} files");
+  }
+
+  void _initializeEmbeddings() async {
+    try {
+      _embeddings = await Embeddings.load();
+      if (mounted) {
+        setState(() {
+          _embeddingsLoaded = true;
+          print("✅ Embeddings model loaded successfully");
+        });
+      }
+    } catch (e) {
+      print("❌ Failed to load embeddings model: $e");
+    }
   }
 
   void _initializeAnimations() {
@@ -222,6 +340,15 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
       return;
     }
 
+    // Check if embeddings are loaded before starting
+    if (!_embeddingsLoaded) {
+      setState(() {
+        _isListening = false;
+        _status = "Embeddings model not ready. Please wait.";
+      });
+      return;
+    }
+
     try {
       setState(() {
         _isListening = true;
@@ -271,6 +398,18 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen>
               _textController.forward();
             }
           });
+
+          if (val.finalResult) {
+            _lastFullText = _recognizedText;
+            _lastWords = val.recognizedWords;
+            _confidence = val.confidence;
+            _status = "Got it! Processing...";
+
+            // Embed the recognized text
+            _createTextFile(_recognizedText);
+            // encrypt the text file
+            _encryptAll();
+          }
         },
         listenFor: Duration(seconds: 30),
         pauseFor: Duration(seconds: 3),
